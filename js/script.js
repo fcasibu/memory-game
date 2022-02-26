@@ -1,7 +1,6 @@
 (() => {
   const Game = {
-    init() {
-      this.gridItem = document.querySelectorAll(".grid-item");
+    utilities() {
       this.letterArr = [
         "a",
         "a",
@@ -15,6 +14,18 @@
         "e",
         "f",
         "f",
+        "g",
+        "g",
+        "h",
+        "h",
+        "i",
+        "i",
+        "j",
+        "j",
+        "k",
+        "k",
+        "l",
+        "l",
       ];
       this.counter = 0;
       this.guessArr = [];
@@ -35,22 +46,30 @@
       this.shuffledItems.push(this.letterArr);
     },
 
-    createOverlayAndTextContainer() {
-      for (let i = 0; i < this.gridItem.length; i++) {
+    createGrid(n) {
+      this.gridContainer = document.createElement("div");
+      this.gridContainer.classList.add("grid-container");
+      document.body.prepend(this.gridContainer);
+      for (let i = 0; i < n; i++) {
+        this.item = document.createElement("div");
         this.itemOverlay = document.createElement("div");
         this.itemText = document.createElement("p");
+        this.item.classList.add("grid-item");
         this.itemOverlay.classList.add("grid-item-overlay");
         this.itemText.classList.add("grid-item-text");
-        this.gridItem[i].appendChild(this.itemOverlay);
-        this.gridItem[i].appendChild(this.itemText);
-        this.gridItem[i].dataset.clicked = false;
+        this.item.dataset.index = i;
+        this.item.dataset.clicked = false;
+        this.gridContainer.appendChild(this.item);
+        this.item.appendChild(this.itemOverlay);
+        this.item.appendChild(this.itemText);
       }
-      this.gridItemOverlay = document.querySelectorAll(".grid-item-overlay");
+      this.gridItem = document.querySelectorAll(".grid-item");
     },
 
     addText() {
       for (let i = 0; i < this.gridItem.length; i++) {
-        this.gridItem[i].children[1].textContent = this.shuffledItems[0][i];
+        this.gridItem[i].children[1].textContent =
+          this.shuffledItems[0][i].toUpperCase();
       }
     },
 
@@ -81,7 +100,7 @@
       const isFound = [...this.gridItem].every(
         (item) => item.dataset.found === "true"
       );
-
+      console.log([...this.gridItem]);
       if (isFound) {
         setTimeout(() => {
           alert("good job!");
@@ -116,9 +135,9 @@
       );
     },
   };
-  Game.init();
+  Game.utilities();
   Game.shuffleItems();
-  Game.createOverlayAndTextContainer();
+  Game.createGrid(24);
   Game.addText();
   Game.clickListener();
 })();
