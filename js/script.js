@@ -30,7 +30,6 @@
       this.counter = 0;
       this.guessArr = [];
       this.itemIndex = [];
-      this.shuffledItems = [];
     },
 
     initializeHelpModal() {
@@ -57,14 +56,13 @@
 
     shuffleItems() {
       for (let i = this.letterArr.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * i + 1);
+        const j = Math.floor(Math.random() * (i + 1));
 
         [this.letterArr[i], this.letterArr[j]] = [
           this.letterArr[j],
           this.letterArr[i],
         ];
       }
-      this.shuffledItems.push(this.letterArr);
     },
 
     createGrid() {
@@ -95,7 +93,7 @@
     addText() {
       for (let i = 0; i < this.itemInner.length; i++) {
         this.itemInner[i].children[1].textContent =
-          this.shuffledItems[0][i].toUpperCase();
+          this.letterArr[i].toUpperCase();
       }
     },
 
