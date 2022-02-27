@@ -7,9 +7,33 @@
     <link rel="stylesheet" href="./css/all.min.css" />
     <link rel="stylesheet" href="./css/normalize.css" />
     <link rel="stylesheet" href="./css/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Public+Sans:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
     <title>Document</title>
   </head>
   <body>
+    <div class="help-modal">
+      <h1>How to play</h1>
+      <p class="help-para">
+        There will be two pairs of the same letters from A-L. Their position
+        will be randomized and the goal is to find these two pairs. Upon
+        clicking the play button a timer will start and your time will be shown
+        after completing the game.
+      </p>
+      <img src="./help-img.png" alt="" />
+      <button class="btn btn--play">Play!</button>
+    </div>
+    <div class="end-modal">
+      <p>Congratulations! You have completed the game</p>
+      <p>Your time: <span class="time"> </span></p>
+      <p>Your best time: <span class="best-time"></span></p>
+      <p>The lower the better!!!</p>
+      <button class="btn btn--reset">Play again</button>
+    </div>
     <script src="./js/script.js"></script>
   </body>
 </html>
